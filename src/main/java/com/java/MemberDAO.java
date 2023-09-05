@@ -57,4 +57,30 @@ public class MemberDAO {
 		return n;
 	}
 	
+	public int updateMember(String userId,String userPwd) {
+		int n = 0;
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		
+		String sql = "update member set userpwd = ? where userid = ?";
+		
+		conn = jdbcUtil.getConnection();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userPwd);
+			pstmt.setString(2, userId);
+			n = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			jdbcUtil.close(conn, pstmt);
+		}
+		return n;
+		
+	}
+	
 }

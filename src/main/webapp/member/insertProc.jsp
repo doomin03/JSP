@@ -20,7 +20,7 @@
 		n = dao.insertmember(id, pwd);
 		
 		if(n>0){
-			response.sendRedirect("/Day0829/member/memberList.jsp");
+			response.sendRedirect("/JSP/member/memberList.jsp");
 			
 		}
 		else
