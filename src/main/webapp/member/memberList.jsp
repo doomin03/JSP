@@ -15,11 +15,14 @@
 		<tr>
 			<th>사용자ID</th>
 			<th>수정</th>
+			<th>삭제</th>
+			
 		</tr>
 		<%
 			MemberDAO dao = new MemberDAO();
 			ArrayList<String> list = dao.getMember();
 			String updateLink = "memberUpdate.jsp?id=";
+			String deleteLink = "/JSP/delete?id=";
 			if(list.isEmpty()){
 				out.print("<tr><td>회원정보가 없습니다</td></tr>");
 			}
@@ -29,6 +32,7 @@
 					<tr>
 						<td><%= data %></td>
 						<td> <a href="<%= updateLink + data %>">수정</a></td>
+						<td> <a href="<%= deleteLink + data %>">삭제</a></td>
 					</tr>
 		<%
 				}

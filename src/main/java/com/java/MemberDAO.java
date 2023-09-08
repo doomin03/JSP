@@ -83,4 +83,29 @@ public class MemberDAO {
 		
 	}
 	
+	public int deleteMember(String userId) {
+		int n = 0;
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		
+		String sql = "delete from member where userid = ?";
+		
+		conn = jdbcUtil.getConnection();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			n = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			jdbcUtil.close(conn, pstmt);
+		}
+		return n;
+		
+	}
+	
 }
